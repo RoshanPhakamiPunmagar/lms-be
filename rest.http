@@ -1,0 +1,43 @@
+@rootURL = http://localhost:3000
+@apiEP = {{rootURL}}/api/v1
+@adminEP = {{apiEP}}/admin
+@authEP = {{apiEP}}/auth
+@userEP = {{apiEP}}/users
+@bookEP = {{apiEP}}/books
+@reviewEP = {{apiEP}}/reviews
+
+
+###
+POST {{authEP}}/register
+Content-Type: application/json
+
+{
+    "fName": "prem",
+    "lName": "presfdsm",
+    "phone": "34567",
+    "email": "asdf2@sdfc.com",
+    "password": "sdfdsf"
+  
+}
+
+###
+POST {{authEP}}/login
+Content-Type: application/json
+
+{
+    "email" : "asdf2@sdfc.com",
+    "password" : "sdfdsf"
+}
+
+### renew jwt
+GET {{authEP}}/renew-jwt
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzZGYyQHNkZmMuY29tIiwiaWF0IjoxNzYyMzg1Njk4LCJleHAiOjE3NjQ5Nzc2OTh9.USVnKQN8QYy_Nt49ydiSeyy-7EKb9uHPdjVPIzoSZhM
+
+###
+GET {{bookEP}}
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzZGYyQHNkZmMuY29tIiwiaWF0IjoxNzYyMzg1NzQzLCJleHAiOjE3NjIzODU3NzN9.asujqQpPhmuw5BPlLHiOuvlHU_Et3Cxl4zRzmk2jzlo
+
+
+###
+GET {{userEP}}
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzZGYyQHNkZmMuY29tIiwiaWF0IjoxNzYyMzg2MjAzLCJleHAiOjE3NjIzODYyMzN9.GqwBi5R6ff8djkRX_QcusJALuKxLy5n5631NVFHTz9g
