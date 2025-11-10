@@ -9,5 +9,9 @@ export const getUserByEmail = (email) => {
 };
 
 export const updateUser = async (filter, obj) => {
-  return await UserSchema.findOneAndUpdate(filter, obj);
+  return await UserSchema.findOneAndUpdate(filter, obj).select("-password");
+};
+
+export const getUsers = async (filter) => {
+  return await UserSchema.find(filter).select("-password");
 };

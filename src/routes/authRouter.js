@@ -8,7 +8,8 @@ import {
   loginValidation,
   newUserValidation,
 } from "../middlewares/joiValidation.js";
-import { rewnewauth } from "../middlewares/authMiddleware.js";
+import { auth, rewnewauth } from "../middlewares/authMiddleware.js";
+import { fetchUserDetail } from "../controllers/userControllers.js";
 
 const router = express.Router();
 
@@ -21,5 +22,8 @@ router.post("/login", loginValidation, loginUser);
 // api/v1/auth/renew-jwt
 // renew token authenticator
 router.get("/renew-jwt", rewnewauth, renewToken);
+
+// api/v1/auth/users
+router.get("/users", auth, fetchUserDetail);
 
 export default router;

@@ -26,7 +26,7 @@ export const newUserValidation = (req, res, next) => {
     fName: STR_REQUIRED,
     lName: STR_REQUIRED,
     phone: PHONE,
-    email: EMAIL,
+    email: EMAIL.required(),
     password: STR_REQUIRED,
   });
   return joiValidator({ req, res, next, schema });
@@ -36,6 +36,32 @@ export const loginValidation = (req, res, next) => {
   const schema = Joi.object({
     email: EMAIL.required(),
     password: STR_REQUIRED,
+  });
+  return joiValidator({ req, res, next, schema });
+};
+
+// creating a book
+export const newBookValidation = (req, res, next) => {
+  const schema = Joi.object({
+    title: STR_REQUIRED,
+    author: STR_REQUIRED,
+    isbn: STR_REQUIRED,
+    publishedYear: NUM_REQ,
+    thumbnail: STR_REQUIRED,
+    description: STR_REQUIRED,
+  });
+  return joiValidator({ req, res, next, schema });
+};
+
+// update book validation
+export const updateBookValidation = (req, res, next) => {
+  const schema = Joi.object({
+    title: STR,
+    author: STR,
+    publishedYear: joi.number(),
+    thumbnail: STR,
+    description: STR,
+    status: STR.allow(["active", "inactive"]),
   });
   return joiValidator({ req, res, next, schema });
 };

@@ -6,6 +6,7 @@ import cors from "cors";
 import authRouter from "./src/routes/authRouter.js";
 import bookRouter from "./src/routes/bookRouter.js";
 import userRouter from "./src/routes/userRouter.js";
+import borrowRouter from "./src/routes/borrowRouter.js";
 
 const app = express();
 const PORT = config.port;
@@ -24,10 +25,14 @@ app.get("/", (req, res) => {
 app.use("/api/v1/auth", authRouter);
 
 // user
+// admin api
 app.use("/api/v1/users", userRouter);
 
 // book
 app.use("/api/v1/books", bookRouter);
+
+// borrows
+app.use("/api/v1/borrows", borrowRouter);
 
 // error validator
 app.use((error, req, res, next) => {
